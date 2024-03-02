@@ -1,5 +1,6 @@
 # piper-http
- Creates a docker image that runs the piper http service
+Creates a docker image that runs the piper http service found in this repo:
+https://github.com/rhasspy/piper
 
 ## How to use this:
 1. Download repo via git clone or direct download
