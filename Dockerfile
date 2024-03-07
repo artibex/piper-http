@@ -36,8 +36,12 @@ EXPOSE 5000
 
 # Create ENV that will be used in the run.py file to set the download link
 ENV MODEL_DOWNLOAD_LINK="https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/pavoque/low/de_DE-pavoque-low.onnx?download=true"
+
 # Create ENV that will be used in the run.py file to set the target folder
 ENV MODEL_TARGET_FOLDER="/app/models"
 
+# Create ENV that will be used in the run.py file to set the speaker
+ENV SPEAKER="0"
+
 # Run the webserver with python run.py
-CMD python /app/run.py $MODEL_DOWNLOAD_LINK $MODEL_TARGET_FOLDER
+CMD python /app/run.py $MODEL_DOWNLOAD_LINK $MODEL_TARGET_FOLDER $SPEAKER

@@ -1,0 +1,43 @@
+# Write a GitHub action that builds the docker container with the Dockerfile
+# and push it to Docker Hub. The action should use the latest version of the Dockerfile
+
+# The action should be triggered on every push to the main branch
+
+# The action should use the following secrets:
+# - DOCKERHUB_USERNAME
+# - DOCKERHUB_TOKEN
+
+# The action should use the following environment variables:
+# - IMAGE_NAME
+# - IMAGE_TAG
+# - DOCKERHUB_REPO
+
+name: Build and push Docker image
+# Build whenever a push is made to the main branch
+on:
+  push:
+    branches:
+      - main
+
+# Environment variables
+env:
+  IMAGE_NAME: "piper-http"
+  IMAGE_TAG: "latest"
+  DOCKERHUB_REPO: "artibex"
+
+# Jobs
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Login to Docker Hub
+        run: echo ${{ secrets.DOCKERHUB_TOKEN }} | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+        
+      - name: Build and push
+        run: |
+          docker build -t $DOCKERHUB_REPO/$IMAGE_NAME:$IMAGE_TAG .
+          docker push $DOCKERHUB_REPO/$IMAGE_NAME:$IMAGE_TAG
+```
