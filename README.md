@@ -15,5 +15,5 @@ See image on docker hub for more information:
 https://hub.docker.com/r/artibex/piper-http
 
 ### Support the Developer:
-- [Buy Me a Coffee](https://www.buymeacoffee.com/korbinianma)
+- [Buy Me a Coffee](https://buymeacoffee.com/artibex)
 - [My Music / Socials](https://hyperfollow.com/Artibex)
