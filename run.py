@@ -22,11 +22,15 @@ script_folder = os.path.dirname(os.path.realpath(__file__))
 # Join script folder with download-piper-voices.py
 download_script = os.path.join(script_folder, "download/download-piper-voices.py")
 
-# Download the model
-subprocess.run(['python', download_script, link, target_folder])
-
 # Join target_folder with the model name
 model_path = os.path.join(target_folder, "model.onnx")
+
+# Only download the model if it does not already exist
+if os.path.exists(model_path):
+    print(f"Model already exists at {model_path}, skipping download.")
+else:
+    print(f"Model not found at {model_path}, downloading...")
+    subprocess.run(['python', download_script, link, target_folder])
 
 # If the --speaker arg is provided, run the http server with the model and the speaker
 if len(sys.argv) > 3:

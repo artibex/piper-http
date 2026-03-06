@@ -44,4 +44,4 @@ ENV MODEL_TARGET_FOLDER="/app/models"
 ENV SPEAKER="0"
 
 # Run the webserver with python run.py
-CMD python /app/run.py $MODEL_DOWNLOAD_LINK $MODEL_TARGET_FOLDER $SPEAKER
+CMD ["sh", "-c", "python -u /app/run.py $MODEL_DOWNLOAD_LINK $MODEL_TARGET_FOLDER $SPEAKER"]

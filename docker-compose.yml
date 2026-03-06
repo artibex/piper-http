@@ -1,0 +1,16 @@
+services:
+  piper:
+    image: artibex/piper-http:latest
+    container_name: piper
+    ports:
+      - "5000:5000"
+    environment:
+      MODEL_DOWNLOAD_LINK: "https://huggingface.co/rhasspy/piper-voices/resolve/v1.0.0/de/de_DE/pavoque/low/de_DE-pavoque-low.onnx?download=true"
+      MODEL_TARGET_FOLDER: "/app/models"
+      SPEAKER: "0"
+    volumes:
+      - piper-models:/app/models
+    restart: unless-stopped
+
+volumes:
+  piper-models:
