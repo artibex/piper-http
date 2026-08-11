@@ -1,3 +1,5 @@
+
+
 # piper-http
 Creates a docker image that runs the piper http service found in this repo:
 https://github.com/rhasspy/piper
@@ -29,9 +31,9 @@ The downloaded model is stored in a named Docker volume (`piper-models`) so it i
 curl "http://localhost:5000/?text=Hello+World" -o hello.wav
 ```
 
-**Change the voice** by editing `MODEL_DOWNLOAD_LINK` in `docker-compose.yml` and restarting:
+**Change the voice** by editing `MODEL_DOWNLOAD_LINK` in `docker-compose.yml` and recreating the container:
 ```bash
-docker compose up -d
+docker compose up -d --force-recreate
 ```
 Browse available voices: https://huggingface.co/rhasspy/piper-voices
 
